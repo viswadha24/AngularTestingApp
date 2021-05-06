@@ -1,5 +1,139 @@
 <h1>Welcome to Angular Framework</h1>
 <hr>
-<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias, tempore? Consequuntur impedit deleniti consectetur necessitatibus totam, error magnam eius distinctio velit animi rem libero quas sunt. Ad quis doloremque veniam!</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus iusto provident, maxime doloremque ipsum rem tenetur recusandae et deserunt accusamus illo, omnis architecto a nulla, temporibus in rerum quis? Harum. </p>
+<div class=text-center>
+    <h2 class="text-danger">Interpolation</h2>
+    <h1 class="text-info">{{name}}  {{version}}</h1>
+    <h2 class="text-warning">{{instructor}}</h2>
+    <h3>Details of te course</h3>
+    <h4>{{courseDetails.duration}}</h4>
+    <h4>{{courseDetails.modeOfTraining}}</h4>
+
+    <h2 class="text-danger">Property Binding</h2>
+    <img [src]=imagePath alt="">
+    <!--difference between interpolation and property binding-->
+    <button class="btn btn-success m-3" disabled={{status}}>Test button</button>
+    <button class="btn btn-success" [disabled]=status>Test button</button>
+
+
+    <h2 class="text-danger">Event Binding</h2>
+    <input type="text" class="form-control" #ref>
+    <button class="btn btn-primary" (click)="sendData(ref.value)">Send Data</button>
+    <h1>{{data}}</h1>
+    
+    <h2 class="text-danger" *ngIf=statusSd>Structural Directives</h2>
+    <!--Trying to give toggle nature using the button,if we click on the button the above text shud disappear,on clicking it again it must appear-->
+    <button class="btn btn-success" (click)="changeStatusSd()">{{statusSd? "Hide":"Show"}}</button>
+
+    <!--iterating array using *ngFor-->
+    
+    <h2 *ngFor="let n of arr">{{n}}</h2>
+    <ul>
+        <li *ngFor="let x of arr">{{x}}</li>
+    </ul>
+<br><br><br>
+<hr>
+<hr>
+<!--Task using *ngFor [similar todo app]-->
+    <div class="w-50 mx-auto mt-5">
+        <h2 class="text-info">To-Do List</h2>
+        <hr>
+        <label for="">Add to-do item</label>
+        <!--
+        <input type="text" value=""  class="form-control w-100" #ref1>
+        <button class="btn btn-warning mt-3 text-danger" (click)="sendItem(ref1.value);ref1.value=''" >
+            <i class="fas fa-plus "></i>
+            Add To list</button>
+        -->
+        <!--Using two way data binding -->
+        <input type="text" class="form-control w-100" [(ngModel)]="item">
+        <button class="btn btn-warning mt-3 text-danger" (click)="addItem();" >
+            <i class="fas fa-plus "></i>
+            Add To list</button>         
+
+
+
+        <div class="text-center mt-5 ">
+            <h2 class="bg-dark text-light">List of Items</h2>
+            <hr>
+
+            <h2 *ngIf="todoItems.length==0">
+                <i class="fas fa-search"></i>
+                No items found!!</h2>
+            <h4 *ngFor="let item of todoItems;let ind=index" class="bg-success p-2">{{item}}
+                <!--Delete button-->
+                <button class="btn-danger " style="float:right;" (click)="deleteItem(ind)"><i class="fas fa-trash-alt"></i></button>
+            </h4>
+        </div>
+       
+        
+    </div>
+
+<br><br><br>
+
+<!--Submitting data of a form in angular-->
+    <h1 class="bg-secondary w-75 text-center mx-auto">USER REGISTRATION FORM</h1>
+    <form #ref="ngForm" (ngSubmit)="addUserData(ref)">
+        <div>
+            <label for="un">Username</label>
+            <input type="text" name="username" id="un" class="form-control" ngModel>
+        </div>
+        <div>
+            <label for="dob">DOB</label>
+            <input type="date" name="dob" id="dob" class="form-control" ngModel>
+        </div>
+        <div>
+            <label for="em">E-mail</label>
+            <input type="email" name="email" id="em" class="form-control" ngModel>
+        </div>
+
+        <button type="submit" class="btn btn-success m-2">Register</button>
+    </form>
+
+
+
+<br><br><br>
+<!--submitting form data use=ing two way data binding-->
+
+<h1 class="bg-secondary w-75 text-center mx-auto">USER REGISTRATION FORM</h1>
+<form (ngSubmit)="addUserData1()">
+    <div>
+        <label for="un">Username</label>
+        <input type="text" name="username" id="un" class="form-control" [(ngModel)]=userObj.username>
+    </div>
+    <div>
+        <label for="dob">DOB</label>
+        <input type="date" name="dob" id="dob" class="form-control" [(ngModel)]=userObj.dob>
+    </div>
+    <div>
+        <label for="em">E-mail</label>
+        <input type="email" name="email" id="em" class="form-control" [(ngModel)]=userObj.email>
+    </div>
+
+    <button type="submit" class="btn btn-success m-2">Register</button>
+</form>
+
+
+
+
+
+
+
+<br><br><br><br><br>
+
+
+</div>
+<div class="container">
+    <div class="row">
+        <!--registration-->
+        <div class="col-6">
+            <app-user-registration></app-user-registration>
+        </div>
+        <!--List-->
+        <div class="col-6">
+            <app-user-list></app-user-list>
+        </div>
+    </div>
+</div>
+
+<br><br><br><br>
 <img src="assets/img1.png" alt="Not available">

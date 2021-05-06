@@ -1,0 +1,18 @@
+<p>user-registration works!</p>
+<h1 class="bg-secondary w-75 text-center mx-auto">USER REGISTRATION FORM</h1>
+<form (ngSubmit)="addUserData1()">
+    <div>
+        <label for="un">Username</label>
+        <input type="text" name="username" id="un" class="form-control" [(ngModel)]=userObj1.username>
+    </div>
+    <div>
+        <label for="dob">DOB</label>
+        <input type="date" name="dob" id="dob" class="form-control" [(ngModel)]=userObj1.dob>
+    </div>
+    <div>
+        <label for="em">E-mail</label>
+        <input type="email" name="email" id="em" class="form-control" [(ngModel)]=userObj1.email>
+    </div>
+
+    <button type="submit" class="btn btn-success m-2">Register</button>
+</form>

@@ -7,3 +7,11 @@ img{
     display:block;
     margin:auto;
 }
+ul{
+    list-style:inside;
+}
+
+.form-control{
+    width:50%;
+    margin:auto;
+}
